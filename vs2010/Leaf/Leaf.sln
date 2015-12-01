@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Leaf", "Leaf\Leaf.vcxproj", "{EFEDE5A1-7796-4D68-BE62-47FF21776A86}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E9872BB9-8E5C-4246-AC22-3FF059791E77} = {E9872BB9-8E5C-4246-AC22-3FF059791E77}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "driver", "driver\driver.vcxproj", "{E9872BB9-8E5C-4246-AC22-3FF059791E77}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFEDE5A1-7796-4D68-BE62-47FF21776A86}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EFEDE5A1-7796-4D68-BE62-47FF21776A86}.Debug|Win32.Build.0 = Debug|Win32
+		{EFEDE5A1-7796-4D68-BE62-47FF21776A86}.Release|Win32.ActiveCfg = Release|Win32
+		{EFEDE5A1-7796-4D68-BE62-47FF21776A86}.Release|Win32.Build.0 = Release|Win32
+		{E9872BB9-8E5C-4246-AC22-3FF059791E77}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E9872BB9-8E5C-4246-AC22-3FF059791E77}.Debug|Win32.Build.0 = Debug|Win32
+		{E9872BB9-8E5C-4246-AC22-3FF059791E77}.Release|Win32.ActiveCfg = Release|Win32
+		{E9872BB9-8E5C-4246-AC22-3FF059791E77}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

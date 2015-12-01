@@ -1,4 +1,4 @@
-INC := -I../driver/thread
+INC := -I../driver/thread -I../common/
 LIB := ../out/lout/libdriver.so \
 
 

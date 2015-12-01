@@ -1,0 +1,28 @@
+﻿Build started 2015/12/1 22:59:10.
+     1>Project "F:\Leaf\Leaf\vs2010\Leaf\Leaf\Leaf.vcxproj" on node 3 (rebuild target(s)).
+     1>InitializeBuildStatus:
+         Touching "Debug\Leaf.unsuccessfulbuild".
+       ClCompile:
+         D:\program\vs2010\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\linuxtest\linuxtest.cpp
+         linuxtest.cpp
+       ManifestResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\Leaf.exe.embed.manifest.res" Debug\Leaf_manifest.rc 
+       Link:
+         D:\program\vs2010\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"..\..\..\out\wout\Leaf.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\Leaf.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"F:\Leaf\Leaf\out\wout\Leaf.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"..\..\..\out\wout\Leaf.lib" /MACHINE:X86 Debug\Leaf.exe.embed.manifest.res
+         Debug\linuxtest.obj
+       Manifest:
+         Deleting file "Debug\Leaf.exe.embed.manifest".
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\Leaf.exe.embed.manifest" /manifest Debug\Leaf.exe.intermediate.manifest
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\Leaf.exe.embed.manifest.res" Debug\Leaf_manifest.rc 
+       LinkEmbedManifest:
+         D:\program\vs2010\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"..\..\..\out\wout\Leaf.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\Leaf.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"F:\Leaf\Leaf\out\wout\Leaf.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"..\..\..\out\wout\Leaf.lib" /MACHINE:X86 Debug\Leaf.exe.embed.manifest.res
+         Debug\linuxtest.obj
+         Leaf.vcxproj -> F:\Leaf\Leaf\vs2010\Leaf\Leaf\..\..\..\out\wout\Leaf.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\Leaf.unsuccessfulbuild".
+         Touching "Debug\Leaf.lastbuildstate".
+     1>Done Building Project "F:\Leaf\Leaf\vs2010\Leaf\Leaf\Leaf.vcxproj" (rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.14

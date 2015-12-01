@@ -1,0 +1,31 @@
+﻿Build started 2015/12/1 22:59:09.
+     1>Project "F:\Leaf\Leaf\vs2010\Leaf\driver\driver.vcxproj" on node 2 (rebuild target(s)).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(299,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+     1>InitializeBuildStatus:
+         Creating "Debug\driver.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         D:\program\vs2010\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D DRIVER_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\driver\thread\thread.cpp
+         thread.cpp
+       ManifestResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\driver.dll.embed.manifest.res" Debug\driver_manifest.rc 
+       Link:
+         D:\program\vs2010\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"..\..\..\out\wout\driver.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\driver.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"F:\Leaf\Leaf\out\wout\driver.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"..\..\..\out\wout\driver.lib" /MACHINE:X86 /DLL Debug\driver.dll.embed.manifest.res
+         Debug\thread.obj
+            Creating library ..\..\..\out\wout\driver.lib and object ..\..\..\out\wout\driver.exp
+       Manifest:
+         Deleting file "Debug\driver.dll.embed.manifest".
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\driver.dll.embed.manifest" /manifest Debug\driver.dll.intermediate.manifest
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\driver.dll.embed.manifest.res" Debug\driver_manifest.rc 
+       LinkEmbedManifest:
+         D:\program\vs2010\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"..\..\..\out\wout\driver.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\driver.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"F:\Leaf\Leaf\out\wout\driver.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"..\..\..\out\wout\driver.lib" /MACHINE:X86 /DLL Debug\driver.dll.embed.manifest.res
+         Debug\thread.obj
+            Creating library ..\..\..\out\wout\driver.lib and object ..\..\..\out\wout\driver.exp
+         driver.vcxproj -> F:\Leaf\Leaf\vs2010\Leaf\driver\..\..\..\out\wout\driver.dll
+       FinalizeBuildStatus:
+         Deleting file "Debug\driver.unsuccessfulbuild".
+         Touching "Debug\driver.lastbuildstate".
+     1>Done Building Project "F:\Leaf\Leaf\vs2010\Leaf\driver\driver.vcxproj" (rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.16
