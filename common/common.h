@@ -1,11 +1,18 @@
+/*********************************
+**********************************
+*****create by patrick at 2015/12/1***
+**********************************
+**********************************/
+
 #ifndef COMMON_H_H_H
 #define COMMON_H_H_H
 
-//#define CUR_OS_LINUX
+#ifndef CUR_OS_LINUX
 #define CUR_OS_WINDOWS
+#endif
 
 // Define cross platform variables 
-#ifdef CUR_OS_LINUX
+#ifdef CUR_OS_WINDOWS
 
 typedef char     int8_t;
 typedef short int   int16_t;

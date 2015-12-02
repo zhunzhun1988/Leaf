@@ -1,16 +1,8 @@
-/*********************************
-**********************************
-*****create by patrick at 2015/12/1***
-**********************************
-**********************************/
-
 #include <thread/thread.h>
 #include <common.h>
 
 #include "stdio.h"
 #pragma comment(lib, "driver.lib")
-
-
 int32_t main() {
   printf("1 + 5 = %d\n", add(1, 5));
   printf("int8_t = %d\n", sizeof(int8_t));

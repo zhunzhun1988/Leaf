@@ -39,10 +39,10 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>F:\Leaf\Leaf\common;F:\Leaf\Leaf\driver;$(IncludePath)</IncludePath>
+    <IncludePath>../../../common;../../../driver;$(IncludePath)</IncludePath>
     <OutDir>..\..\..\out\wout\</OutDir>
-    <LibraryPath>F:\Leaf\Leaf\out\wout;$(LibraryPath)</LibraryPath>
-    <ExcludePath>F:\Leaf\Leaf\out\wout;$(ExcludePath)</ExcludePath>
+    <LibraryPath>../../../out/wout;$(LibraryPath)</LibraryPath>
+    <ExcludePath>../../../out/wout;$(ExcludePath)</ExcludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>

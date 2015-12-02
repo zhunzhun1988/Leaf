@@ -39,7 +39,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>F:\Leaf\Leaf\common;$(IncludePath)</IncludePath>
+    <IncludePath>../../../common;$(IncludePath)</IncludePath>
     <OutDir>..\..\..\out\wout</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

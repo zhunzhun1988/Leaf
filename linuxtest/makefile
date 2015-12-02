@@ -1,6 +1,11 @@
-INC := -I../driver/thread -I../common/
+INC := -I../driver/ -I../common/
 LIB := ../out/lout/libdriver.so \
 
+SRC := test.cpp \
 
-test: linuxtest.cpp
-	gcc linuxtest.cpp $(INC) -o test $(LIB)
+test: $(SRC) $(LIB)
+	gcc $(SRC) $(INC) -o test $(LIB)
+
+
+clean:
+	-rm test

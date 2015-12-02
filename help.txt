@@ -1,1 +1,2 @@
-git test
+1:linux 环境下到当前目录 运行make将编译生成相关库，到linuxetest目录下运行make将在该目录下生成一个test的可执行程序用来测试
+2：windows环境目前只支持vs2010，到vs2010/Leaf目录下打开Leaf.sln项目及可编译测试
