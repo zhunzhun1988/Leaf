@@ -12,7 +12,7 @@
 #endif
 
 // Define cross platform variables 
-#ifdef CUR_OS_WINDOWS
+#ifdef CUR_OS_LINUX
 
 typedef char     int8_t;
 typedef short int   int16_t;

@@ -14,5 +14,5 @@
 #include "thread.h"
 
 int32_t add(int32_t a, int32_t b) {
-    return a + b + 11;
+    return a + b;
 }

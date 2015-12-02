@@ -2,7 +2,7 @@ GCC := gcc
 LD := ld
 
 PWD = $(shell pwd)
-LDFLAGS := -shared -fpic
+LDFLAGS := -shared -fpic -DCUR_OS_LINUX
 CFLAGS := -g -Wall -fpic
 
 LIB_NAME := libdriver

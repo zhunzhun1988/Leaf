@@ -8,7 +8,6 @@
 #include <common.h>
 
 #include "stdio.h"
-#pragma comment(lib, "driver.lib")
 
 
 int32_t main() {
