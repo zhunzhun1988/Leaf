@@ -11,7 +11,7 @@
 
 
 int32_t main() {
-  printf("1 + 5 = %d\n", add(1, 5));
+ // printf("1 + 5 = %d\n", add(1, 5));
   printf("int8_t = %d\n", sizeof(int8_t));
   printf("int16_t = %d\n", sizeof(int16_t));
   printf("int32_t = %d\n", sizeof(int32_t));

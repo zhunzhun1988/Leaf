@@ -14,6 +14,9 @@
 #undef LEAF_EXPORT
 #define LEAF_EXPORT
 
+#include <pthread.h>
+typedef pthread_t ThreadHandler;
+
 #else
 
 #ifndef LEAF_EXPORT
@@ -21,8 +24,32 @@
 #pragma comment(lib, "driver.lib")
 #endif
 
+typedef int32_t ThreadHandler;
 #endif
 
-LEAF_EXPORT int32_t add(int32_t a, int32_t b);
+// start define
+
+LEAF_EXPORT class IRunable {
+public:
+    IRunable() {}
+    virtual ~IRunable() {}
+    virtual void run() = 0;
+};
+
+LEAF_EXPORT class Thread: public IRunable {
+public:
+    Thread();
+    explicit Thread(IRunable* pRunable);
+    virtual ~Thread();
+    virtual void run();
+    bool start();
+    bool stop();
+
+private:
+	static void *threadFun(void *arg);
+    IRunable* mpRunable;
+	ThreadHandler mThreadHandler;
+	bool mIsStarted;
+};
 
 #endif
