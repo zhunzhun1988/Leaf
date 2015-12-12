@@ -8,6 +8,7 @@
 #define THREAD_H_H_H
 
 #include <common.h>
+#include <cstddef>
 
 #ifdef CUR_OS_LINUX
 
@@ -15,6 +16,8 @@
 #define LEAF_EXPORT
 
 #include <pthread.h>
+#include <unistd.h>
+#include <sys/syscall.h>
 typedef pthread_t ThreadHandler;
 
 #else
@@ -36,7 +39,7 @@ public:
     virtual void run() = 0;
 };
 
-LEAF_EXPORT class Mutex {
+class LEAF_EXPORT Mutex {
 public:
 	enum {
         PRIVATE = 0,
@@ -73,7 +76,7 @@ private:
 #endif
 };
 
-LEAF_EXPORT class Thread: public IRunable {
+class LEAF_EXPORT Thread: public IRunable {
 public:
     Thread();
     explicit Thread(IRunable* pRunable);
@@ -81,12 +84,16 @@ public:
     virtual void run();
     bool start();
     bool stop();
+	void waitForStop();
+	static void sleep(int64_t ms);
+	static int32_t gettid();
 
 private:
 	static void *threadFun(void *arg);
     IRunable* mpRunable;
 	ThreadHandler mThreadHandler;
 	bool mIsStarted;
+	Mutex mMutex;
 };
 
 #endif

@@ -1,4 +1,4 @@
-GCC := gcc
+GCC := g++
 LD := ld
 
 PWD = $(shell pwd)
@@ -33,7 +33,7 @@ $(warning $(SRC_FILES))
 
 all:$(OBJ)
 	-mkdir -p $(DIR_LIB)
-	$(GCC) $(SRC_FILES) $(LDFLAGS) $(DIR_INC) -o $(DIR_LIB)/$(SHARE_LIB)
+	$(GCC) $(SRC_FILES) $(LDFLAGS) $(DIR_INC) -o $(DIR_LIB)/$(SHARE_LIB) -pthread
 	-cp $(DIR_LIB)/$(SHARE_LIB) $(DIR_OUT)
 #	$(LD) $(LDFLAGS) -o $(DIR_LIB)/$(SHARE_LIB) $(OBJ)
 #	${DIR_OBJ}/%.o:${DIR_SRC}/%.cpp

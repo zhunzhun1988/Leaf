@@ -12,7 +12,6 @@
 #endif
 
 #include "thread.h"
-#include <cstddef>
 #include <stdio.h>
 
 
@@ -79,12 +78,14 @@ inline int32_t Mutex::lock() {
 #ifdef CUR_OS_LINUX
     return -pthread_mutex_lock(&mMutex);
 #endif
+	return 0;
 }
 
 inline int32_t Mutex::lockTimeout(unsigned msec) {
 #ifdef CUR_OS_LINUX
     return -pthread_mutex_lock(&mMutex);
 #endif
+	return 0;
 }
 
 inline void Mutex::unlock() {
@@ -97,12 +98,15 @@ inline int32_t Mutex::tryLock() {
 #ifdef CUR_OS_LINUX
     return -pthread_mutex_trylock(&mMutex);
 #endif
+	return 0;
 }
 
 void *Thread::threadFun(void *arg) {
 	IRunable* pRunable = static_cast<IRunable*>(arg);
 	if (pRunable) {
+		printf("thread [%d] run start\n", Thread::gettid());
 		pRunable->run();
+	    printf("thread [%d] run end\n",  Thread::gettid());
 	}
 	return NULL;
 }
@@ -119,7 +123,21 @@ Thread::~Thread() {
 void Thread::run() {
 }
 
+int32_t Thread::gettid() {
+#ifdef CUR_OS_LINUX
+	return syscall(SYS_gettid);
+#endif
+	return -1;
+}
+
+void Thread::sleep(int64_t ms) {
+#ifdef CUR_OS_LINUX
+	usleep(ms);
+#endif
+}
+
 bool Thread::start() {
+	Mutex::AutoLock l_(&mMutex);
 	if (false == mIsStarted) {
 #ifdef CUR_OS_LINUX
 		int32_t ret = pthread_create(&mThreadHandler, NULL, threadFun, (void*)(NULL == mpRunable? this: mpRunable));
@@ -136,5 +154,12 @@ bool Thread::start() {
 }
 
 bool Thread::stop() {
+	Mutex::AutoLock l_(&mMutex);
 	return true;
+}
+
+void Thread::waitForStop() {
+#ifdef CUR_OS_LINUX
+	pthread_join(mThreadHandler, NULL);
+#endif
 }

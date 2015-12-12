@@ -1,13 +1,31 @@
+/*********************************
+**********************************
+*****create by patrick at 2015/12/1***
+**********************************
+**********************************/
+
 #include <thread/thread.h>
 #include <common.h>
 
 #include "stdio.h"
-#pragma comment(lib, "driver.lib")
+
+class MyRunItem: public IRunable {
+public:
+	MyRunItem() {}
+	~MyRunItem() {}
+	void run() {
+		//Thread::sleep(10*1000*1000);
+		printf("run\n");
+	}
+};
+
 int32_t main() {
-  printf("1 + 5 = %d\n", add(1, 5));
-  printf("int8_t = %d\n", sizeof(int8_t));
-  printf("int16_t = %d\n", sizeof(int16_t));
-  printf("int32_t = %d\n", sizeof(int32_t));
-  printf("int63_t = %d\n", sizeof(int64_t));
+  MyRunItem myRun;
+  Thread t(&myRun);
+  Thread t2(&myRun);
+  t.start();
+  t2.start();
+  Thread::sleep(10*1000*1000);
+  
   return 1;
 }
