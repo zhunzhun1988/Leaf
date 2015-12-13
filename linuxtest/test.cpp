@@ -11,12 +11,22 @@
 
 class MyRunItem: public IRunable {
 public:
-	MyRunItem() {}
+	MyRunItem() {mCount = 1000;}
 	~MyRunItem() {}
 	void run() {
-		//Thread::sleep(10*1000*1000);
-		printf("run\n");
+		while (mCount >0 ) {
+			{
+				Mutex::AutoLock l_(&mMutex);
+				if (mCount > 0) {
+					printf("%d useed %d\n", Thread::gettid(), mCount--);
+				}
+			}
+			//Thread::sleep(100*1000);
+		}
 	}
+private:
+	int32_t mCount;
+	Mutex mMutex;
 };
 
 int32_t main() {
@@ -25,7 +35,6 @@ int32_t main() {
   Thread t2(&myRun);
   t.start();
   t2.start();
-  Thread::sleep(10*1000*1000);
-  
+  Thread::sleep(30*1000);
   return 1;
 }

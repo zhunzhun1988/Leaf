@@ -20,14 +20,17 @@
 #include <sys/syscall.h>
 typedef pthread_t ThreadHandler;
 
-#else
+#else  // windows
+
+#include <process.h>
+#include<windows.h>
 
 #ifndef LEAF_EXPORT
 #define LEAF_EXPORT _declspec(dllimport)
 #pragma comment(lib, "driver.lib")
 #endif
 
-typedef int32_t ThreadHandler;
+typedef HANDLE ThreadHandler;
 #endif
 
 // start define
@@ -40,22 +43,22 @@ public:
 };
 
 class LEAF_EXPORT Mutex {
-public:
+  public:
 	enum {
-        PRIVATE = 0,
-        SHARED = 1
-    };
-    Mutex();
-	~Mutex();
-    explicit Mutex(const char* name);
-    Mutex(int32_t type, const char* name = NULL);
-    Mutex(bool recursive, int32_t type = 0, const char* name = NULL);
-	int32_t lock();
-	int32_t lockTimeout(uint32_t msecs);
-	void unlock();
-	int32_t tryLock();
-	class AutoLock {
-		public:
+          PRIVATE = 0,
+          SHARED = 1
+      };
+      Mutex();
+      ~Mutex();
+      explicit Mutex(const char* name);
+      Mutex(int32_t type, const char* name = NULL);
+      Mutex(bool recursive, int32_t type = 0, const char* name = NULL);
+    int32_t lock();
+    int32_t lockTimeout(uint32_t msecs);
+    void unlock();
+    int32_t tryLock();
+    class AutoLock {
+    	public:
         inline explicit AutoLock(Mutex* pMutex) : mLock(*pMutex) { mStatus = mLock.lock(); }
         inline explicit AutoLock(Mutex* pMutex, uint32_t msec) : mLock(*pMutex), mMsec(msec)  {
             msec ? (mStatus = mLock.lockTimeout(msec)) : (mStatus = mLock.lock()); }
@@ -66,13 +69,16 @@ public:
         Mutex& mLock;
         uint32_t mMsec;
         int32_t mStatus;
-	};
+     };
+
 private:
     // A mutex cannot be copied
     //Mutex(const Mutex&);
     //Mutex& operator = (const Mutex&);
 #ifdef CUR_OS_LINUX
     pthread_mutex_t mMutex;
+#else
+    HANDLE mMutex;
 #endif
 };
 
@@ -83,14 +89,13 @@ public:
     virtual ~Thread();
     virtual void run();
     bool start();
-    bool stop();
-	void waitForStop();
-	static void sleep(int64_t ms);
-	static int32_t gettid();
+    bool forceStop();
+    void waitForStop();
+    static void sleep(int64_t ms);
+    static int32_t gettid();
 
 private:
-	static void *threadFun(void *arg);
-    IRunable* mpRunable;
+       IRunable* mpRunable;
 	ThreadHandler mThreadHandler;
 	bool mIsStarted;
 	Mutex mMutex;
