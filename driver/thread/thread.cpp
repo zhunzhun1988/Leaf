@@ -14,6 +14,7 @@
 
 #include "thread.h"
 #include <stdio.h>
+#include<assert.h>
 
 
 inline Mutex::Mutex() {
@@ -123,6 +124,63 @@ inline int32_t Mutex::tryLock() {
     }
 #endif
 }
+
+Condition::Condition() {
+#ifdef CUR_OS_LINUX
+    pthread_cond_init(&mCond, NULL);
+#endif
+}
+
+Condition::Condition(int32_t type) {
+#ifdef CUR_OS_LINUX
+    if (type == SHARED) {
+        pthread_condattr_t attr;
+        pthread_condattr_init(&attr);
+        pthread_condattr_setpshared(&attr, PTHREAD_PROCESS_SHARED);
+        pthread_cond_init(&mCond, &attr);
+        pthread_condattr_destroy(&attr);
+    } else {
+        pthread_cond_init(&mCond, NULL);
+    }
+#endif
+}
+
+Condition::~Condition() {
+#ifdef CUR_OS_LINUX
+    pthread_cond_destroy(&mCond);
+#endif
+}
+
+int32_t Condition::wait(Mutex* pMutex) {
+#ifdef CUR_OS_LINUX
+    assert(pMutex);
+    return pthread_cond_wait(&mCond, &(pMutex->mMutex));
+#endif
+return 0;
+}
+
+int32_t Condition::waitRelative(Mutex* pMutex, int64_t relTime) {
+#ifdef CUR_OS_LINUX
+    assert(pMutex);
+    return pthread_cond_wait(&mCond, &(pMutex->mMutex));
+#endif
+return 0;
+}
+
+
+void Condition::signal() {
+#ifdef CUR_OS_LINUX
+    pthread_cond_signal(&mCond);
+#endif
+}
+
+void Condition::signalAll() {
+#ifdef CUR_OS_LINUX
+    pthread_cond_broadcast(&mCond);
+#endif
+}
+
+
 #ifdef CUR_OS_LINUX
 void * threadFun(void *arg) {
    pthread_setcancelstate(PTHREAD_CANCEL_ENABLE,NULL);  // set thread can canceled

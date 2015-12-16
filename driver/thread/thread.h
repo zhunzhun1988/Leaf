@@ -44,7 +44,8 @@ public:
 
 class LEAF_EXPORT Mutex {
   public:
-	enum {
+    friend class Condition;
+     enum {
           PRIVATE = 0,
           SHARED = 1
       };
@@ -80,6 +81,26 @@ private:
 #else
     HANDLE mMutex;
 #endif
+};
+
+class LEAF_EXPORT Condition {
+    public:
+        enum {
+            PRIVATE = 0,
+                SHARED = 1
+        };
+        Condition();
+        explicit Condition(int32_t type);
+        ~Condition();
+        int32_t wait(Mutex* pMutex);
+        int32_t waitRelative(Mutex* pMutex, int64_t reltime);
+        void signal();
+        void signalAll();
+
+     private:
+        #ifdef CUR_OS_LINUX
+            pthread_cond_t mCond;
+        #endif
 };
 
 class LEAF_EXPORT Thread: public IRunable {
